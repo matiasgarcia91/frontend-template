@@ -44,3 +44,24 @@ export const fetchSpaceDetails = (id) => {
     }
   };
 };
+
+const storyDeleted = (storyId) => ({
+  type: "STORY_DELETED",
+  payload: storyId,
+});
+
+export const deleteStory = (storyId) => async (dispatch, getState) => {
+  try {
+    const response = await axios.delete(`${apiUrl}/spaces/stories/${storyId}`);
+    console.log("deleted?", response.data);
+
+    // update the state
+    // write another action
+    //
+    //
+    //
+    dispatch(storyDeleted(storyId));
+  } catch (e) {
+    console.log(e.message);
+  }
+};
